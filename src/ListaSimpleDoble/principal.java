@@ -55,6 +55,7 @@ public class principal {
         B.mostrar();
 
         //5 mostrar a los grupo y sus integrantes
+        System.out.println("MOSTRAR GRUPOS E INTEGRANTES");
         GruposI(A, B);
     }
 

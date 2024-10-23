@@ -40,13 +40,25 @@ public class principal {
         B.elifinal();
         System.out.println("\nLISTA DE INTEGRANTES");
         B.mostrar();
-        
+
         System.out.println("NUEVO GRUPO");
-        nuevoDespuesDeX(A,"GGG", 2);
+        nuevoDespuesDeX(A, "GGG", 2);
         A.mostrar();
+
+        //eliminar al grupo con el nro x
+        eliminarX(A, 2);
+        A.mostrar();
+
+        //eliminar a los integrantes de grupo con el nro x
+        eliminaI(B, 3);
+        System.out.println("ELIMINA INTEGRANTES");
+        B.mostrar();
+
+        //5 mostrar a los grupo y sus integrantes
+        GruposI(A, B);
     }
 
-    public static void nuevoDespuesDeX(LSimpleG b,String c, int i) {
+    public static void nuevoDespuesDeX(LSimpleG b, String c, int i) {
         NodoG nue = new NodoG();
         nue.setNroG(i);
         nue.setNomG(c);
@@ -58,6 +70,65 @@ public class principal {
                 nue.setSig(w2);
             }
             w = w.getSig();
+        }
+    }
+
+    public static void eliminarX(LSimpleG A, int x) {
+        NodoG w = A.getP();
+        NodoG anterior = null; // Para mantener el nodo anterior
+
+        // Recorrer la lista
+        while (w != null) {
+            if (w.getNroG() == x) {
+                if (anterior == null) {
+                    // Eliminar el primer nodo
+                    A.setP(w.getSig());
+                } else {
+                    // Eliminar cualquier otro nodo
+                    anterior.setSig(w.getSig());
+                }
+                return; // Salimos después de eliminar el nodo
+            }
+            anterior = w; // Actualizar el nodo anterior
+            w = w.getSig(); // Avanzar al siguiente nodo
+        }
+    }
+
+    public static void eliminaI(LDobleI A, int x) {
+        NodoI w = A.getP();
+        NodoI w2, w3;
+        w2 = w3 = null;
+        while (w != null) {
+            if (w.getNroG() == x) {//eliminar
+                if (w == A.getP()) {
+                    A.setP(w.getSig());
+                    A.getP().setAnt(null);
+                    w = A.getP();
+                } else {
+                    w2 = w.getAnt();
+                    w3 = w.getSig();
+                    w2.setSig(w3);
+                    w3.setAnt(w2);
+                    w = w3;
+                }
+            } else {
+                w = w.getSig();
+            }
+        }
+    }
+
+    public static void GruposI(LSimpleG a, LDobleI b) {
+        NodoG r1 = a.getP();
+        while (r1 != null) {
+            System.out.println("GRUPO: " + r1.getNomG());
+            NodoI r2 = b.getP();
+            while (r2 != null) {
+                if (r2.getNroG() == r1.getNroG()) {
+                    System.out.println("\t" + r2.getNom());
+                }
+                r2 = r2.getSig();
+            }
+            r1 = r1.getSig();
         }
     }
 }

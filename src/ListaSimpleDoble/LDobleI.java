@@ -37,7 +37,7 @@ public class LDobleI {
     
     public void mostrar(){
         NodoI r=getP();
-        System.out.println(" - Mostrando Municipios -");
+        System.out.println(" - Mostrando Integrantes -");
         while(r!=null){
             System.out.println("<"+r.getNroG()+" "+r.getNom());
             r=r.getSig();

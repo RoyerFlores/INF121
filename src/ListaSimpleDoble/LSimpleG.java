@@ -53,7 +53,7 @@ public class LSimpleG {
 
     public void mostrar() {
         NodoG r = getP();
-        System.out.println(" - Mostrando Municipios -");
+        System.out.println(" - Mostrando GRUPOS -");
         while (r != null) {
             System.out.println("<" + r.getNroG() + " " + r.getNomG());
             r = r.getSig();

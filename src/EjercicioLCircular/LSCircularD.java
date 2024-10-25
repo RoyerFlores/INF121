@@ -57,10 +57,10 @@ public class LSCircularD {
         System.out.println("\n - Mostrando DEPARTAMENTOS -");
         if (r != null) {
             while (r.getSig() != getP()) {
-                System.out.print("<" + r.getIdDpto() + " " + r.getNomDpto());
+                System.out.print("<" + r.getIdDpto() + " " + r.getNomDpto()+" ");
                 r = r.getSig();
             }
-            System.out.println("<" + r.getIdDpto() + " " + r.getNomDpto());
+            System.out.println("<" + r.getIdDpto() + " " + r.getNomDpto()+" ");
         }
     }
 

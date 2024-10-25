@@ -56,10 +56,10 @@ public class LDCircularP {
         if (r != null) {
             System.out.println("\n - Mostrando provincias -");
             while (r.getSig() != getP()) {
-                r.getB().mostrar();
+                System.out.print("<" + r.getB().getIdDpto() + " - " + r.getB().getNombreProv()+" ");
                 r = r.getSig();
             }
-            r.getB().mostrar();
+            System.out.print("< " + r.getB().getIdDpto() + " - " + r.getB().getNombreProv()+" ");
         }
     }
 

@@ -8,19 +8,19 @@ package EjercicioLCircular;
  *
  * @author Royer
  */
-public class LSCircularD {
+public class LDCircularP {
 
-    private NodoD p;
+    private NodoP p;
 
-    LSCircularD() {
+    LDCircularP() {
         p = null;
     }
 
-    public NodoD getP() {
+    public NodoP getP() {
         return p;
     }
 
-    public void setP(NodoD p) {
+    public void setP(NodoP p) {
         this.p = p;
     }
 
@@ -35,32 +35,31 @@ public class LSCircularD {
             setP(nue);
         }
     }*/
-    public void adifinal(int a, String b) {
-        NodoD nue = new NodoD();
-        nue.setIdDpto(a);
-        nue.setNomDpto(b);;
+    public void adifinal(Provincia x) {
+        NodoP nue = new NodoP();
+        nue.setB(x);
         if (getP() == null) {
             setP(nue);
-            nue.setSig(nue);
-        } else {
-            NodoD r = getP();
-            while (r.getSig() != getP()) {
-                r = r.getSig();
-            }
-            r.setSig(nue);
             nue.setSig(getP());
+            nue.setAnt(nue);
+        } else {
+            NodoP w = getP().getAnt();
+            w.setSig(nue);
+            nue.setAnt(w);
+            nue.setSig(getP());
+            getP().setAnt(nue);
         }
     }
 
     public void mostrar() {
-        NodoD r = getP();
-        System.out.println("\n - Mostrando DEPARTAMENTOS -");
+        NodoP r = getP();
         if (r != null) {
+            System.out.println("\n - Mostrando provincias -");
             while (r.getSig() != getP()) {
-                System.out.print("<" + r.getIdDpto() + " " + r.getNomDpto());
+                r.getB().mostrar();
                 r = r.getSig();
             }
-            System.out.println("<" + r.getIdDpto() + " " + r.getNomDpto());
+            r.getB().mostrar();
         }
     }
 

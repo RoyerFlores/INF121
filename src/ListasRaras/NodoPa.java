@@ -16,6 +16,11 @@ public class NodoPa {
     private NodoE1 sig;
     private NodoE1 ant;
     private NodoE2 ant2;
+
+    public NodoPa() {
+        sig=ant=null;
+        ant2=null;
+    }
     
     public NodoPa(String fecha, String hora, int nroGolE1, int nroGolE2, NodoE1 sig, NodoE1 ant, NodoE2 ant2) {
         this.fecha = fecha;

@@ -59,13 +59,13 @@ public class principal {
 
         LSimpleA a2 = new LSimpleA();
         a2.adicion("tabla_datos", "xlsx", 5);
-        a2.adicion("presentacion", "ppwx", 40.2);
+        a2.adicion("presentacion", "pptx", 40.2);
         a2.adicion("tarea", "docx", 3.7);
 
         LSimpleA a3 = new LSimpleA();
         a3.adicion("app", "apk", 2.5);
         a3.adicion("readme", "text", 0.1);
-        a3.adicion("cancion", "mp3", 7.3);
+        a3.adicion("cancion", "mp4", 7.3);
 
         LDobleC C = new LDobleC();
         C.adicion("asdf", a1);
@@ -74,6 +74,12 @@ public class principal {
 
         System.out.println("\n - EJERCICIO 4 -");
         C.mostrar();
+
+        System.out.println("\n - EJERCICIO 5 -");
+        mostrarArchCarpX(C, "tareas");
+
+        System.out.println("\n - EJERCICIO 6 -");
+        contarArchTipoX(C, "mp4");
     }
 
     public static void NumMascX(LSimpleD A, String x) {
@@ -102,5 +108,32 @@ public class principal {
             }
             w = w.getSig();
         }
+    }
+
+    public static void mostrarArchCarpX(LDobleC C, String x) {
+        NodoC w = C.getP();
+        while (w != null) {
+            if (w.getNombre().equals(x)) {
+                System.out.println("Carpeta: " + w.getNombre() + "> ");
+                w.getArchivos().mostrar();
+            }
+            w = w.getSig();
+        }
+    }
+
+    public static void contarArchTipoX(LDobleC C, String x) {
+        NodoC w = C.getP();
+        int c = 0;
+        while (w != null) {
+            NodoA n = w.getArchivos().getP();
+            while (n != null) {
+                if (n.getTipo().equals(x)) {
+                    c++;
+                }
+                n = n.getSig();
+            }
+            w = w.getSig();
+        }
+        System.out.println("Existen " + c + " archivos de tipo " + x);
     }
 }
